@@ -1,0 +1,1 @@
+insert into user(id,email) values(10001,'test@gmail.com')
