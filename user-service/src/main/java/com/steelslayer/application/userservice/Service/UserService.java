@@ -47,7 +47,7 @@ public class UserService {
 		return ResponseEntity.ok().build();
 	}
 	
-	public User checkSession(Map<String,Object> user) {
+	public User loginUser(Map<String,Object> user) {
 		User socialUser = getSocialLoginUser(user);
 		Optional<User> newUser = userRepository.findBySocialIdAndSocialLoginType(socialUser.getSocialId(), socialUser.getSocialLoginType());
 		if(newUser.isPresent()) {
@@ -78,7 +78,4 @@ public class UserService {
 			return user;
 		}
 	}
-	
-	
-	
 }

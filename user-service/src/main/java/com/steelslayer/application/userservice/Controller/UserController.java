@@ -21,24 +21,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/")
-	public ResponseEntity<List<User>> getAllUsers(){
-		return userService.findAll();
-	}
-	
-	@PostMapping("/checkSession")
-	public Object checkSession(@RequestBody Map<String,Object> principal){
-		return userService.checkSession((Map<String, Object>) principal.get("attributes"));
+	@PostMapping("/loginUser")
+	public User loginUser(@RequestBody Map<String,Object> principal){
+		return userService.loginUser((Map<String, Object>) principal.get("attributes"));
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUser(@PathVariable long id){
 		return userService.findById(id);
-	}
-	
-	@PostMapping("/")
-	public ResponseEntity<User> createUser(@Valid @RequestBody User user){
-		return userService.create(user);
 	}
 	
 	@DeleteMapping("/{id}")
